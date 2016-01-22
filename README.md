@@ -1,0 +1,2 @@
+# MouseClicker
+Click Forever
