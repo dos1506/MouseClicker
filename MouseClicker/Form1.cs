@@ -22,8 +22,6 @@ namespace MouseClicker {
 
         public bool status = STOP;
 
-        public int num = 0;
-
         // Task中断用
         public CancellationTokenSource tokenSource = new CancellationTokenSource();
 
