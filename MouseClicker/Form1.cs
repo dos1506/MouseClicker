@@ -6,16 +6,17 @@ using System.Windows.Forms;
 
 namespace MouseClicker {
     public partial class Form1 : Form {
-        const int MOD_ALT = 0x0001;
+        const int MOD_NONE    = 0x0000;
+        const int MOD_ALT     = 0x0001;
         const int MOD_CONTROL = 0x0002;
-        const int MOD_SHIFT = 0x0004;
+        const int MOD_SHIFT   = 0x0004;
 
         const int WM_HOTKEY = 0x0312;
 
         const int HOTKEY_ID = 0x0100;
 
         const int MOUSEEVENTF_LEFTDOWN = 0x2;
-        const int MOUSEEVNETF_LEFTUP = 0x4;
+        const int MOUSEEVNETF_LEFTUP   = 0x4;
 
         const bool STOP = false;
         const bool RUN = true;
@@ -40,7 +41,7 @@ namespace MouseClicker {
 
         private void Form1_Load(object sender, EventArgs e) {
             // ホットキーの登録
-            RegisterHotKey(this.Handle, HOTKEY_ID, MOD_ALT | MOD_SHIFT, (int)Keys.A);
+            RegisterHotKey(this.Handle, HOTKEY_ID, 0, (int)Keys.F9);
         }
 
         private void Form1_Closed(object sender, System.EventArgs e) {
@@ -71,7 +72,7 @@ namespace MouseClicker {
                             while (!token.IsCancellationRequested) {
                                 System.Threading.Thread.Sleep((int)clickDuration);
                                 mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-                                mouse_event(MOUSEEVNETF_LEFTUP, 0, 0, 0, 0);
+                                mouse_event(MOUSEEVNETF_LEFTUP,   0, 0, 0, 0);
                             }
                         }
                         catch (Exception ex) {
